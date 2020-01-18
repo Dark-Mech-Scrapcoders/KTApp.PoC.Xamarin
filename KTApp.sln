@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KTApp.Android", "KTApp.Android\KTApp.Android.csproj", "{593AEC8E-B30C-4DF7-A5C6-C4CE2FF9D6B2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KTApp.Business", "KTApp.Business\KTApp.Business.csproj", "{28D0E083-5823-4E47-8982-F5E6CD038CE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KTApp.Presentation", "KTApp.Business\KTApp.Presentation.csproj", "{28D0E083-5823-4E47-8982-F5E6CD038CE9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KTApp.Core", "KTApp.Core\KTApp.Core.csproj", "{7B56FF60-AD30-4D72-9E9D-33908D942EC3}"
 EndProject

@@ -2,25 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KTApp.Core.Services;
 using KTApp.Models;
 
 namespace KTApp.Services
 {
     public class MockDataStore : IDataStore<Item>
     {
-        readonly List<Item> items;
+        private readonly HotStuffService _hotStuffService;
+        private List<Item> items;
 
-        public MockDataStore()
+        public MockDataStore(HotStuffService hotStuffService)
         {
-            items = new List<Item>()
-            {
-                new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." }
-            };
+            _hotStuffService = hotStuffService;
+
+            //items = new List<Item>()
+            //{
+            //    new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description." },
+            //    new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is an item description." },
+            //    new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is an item description." },
+            //    new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is an item description." },
+            //    new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." },
+            //    new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." }
+            //};
         }
 
         public async Task<bool> AddItemAsync(Item item)
@@ -54,6 +58,16 @@ namespace KTApp.Services
 
         public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
         {
+            var factions = await _hotStuffService.GetFactions();
+            var list = new List<Item>(factions.Count);
+
+            foreach (var item in factions)
+            {
+                list.Add(new Item { Id = item.Id.ToString(), Description = item.Keyword, Text = item.Name });
+            }
+
+            this.items?.Clear();
+            this.items = list;
             return await Task.FromResult(items);
         }
     }

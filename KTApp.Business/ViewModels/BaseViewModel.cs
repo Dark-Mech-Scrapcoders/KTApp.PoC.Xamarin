@@ -7,12 +7,13 @@ using Xamarin.Forms;
 
 using KTApp.Models;
 using KTApp.Services;
+using KTApp.Presentation.DependencyInjection;
 
 namespace KTApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<Item> DataStore => AppContainer.Resolve<IDataStore<Item>>();
 
         bool isBusy = false;
         public bool IsBusy

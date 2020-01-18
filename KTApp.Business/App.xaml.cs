@@ -3,17 +3,20 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using KTApp.Services;
 using KTApp.Views;
+using KTApp.Core.Services;
+using KTApp.Core;
+using Autofac;
 
 namespace KTApp
 {
     public partial class App : Application
     {
-
         public App()
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            // DependencyService.Register<MockDataStore>();
+
             MainPage = new AppShell();
         }
 
