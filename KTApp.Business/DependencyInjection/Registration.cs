@@ -21,7 +21,7 @@ namespace KTApp.Presentation.DependencyInjection
             }
 
             containerBuilder.RegisterType<KillTeamContext>().InstancePerDependency();
-            containerBuilder.RegisterType<HotStuffService>().SingleInstance();
+            containerBuilder.RegisterType<PoCService>().SingleInstance();
 
             containerBuilder.RegisterType<MockDataStore>()
                 .As<IDataStore<Item>>()

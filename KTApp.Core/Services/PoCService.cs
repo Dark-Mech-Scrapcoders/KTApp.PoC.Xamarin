@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace KTApp.Core.Services
 {
-    public class HotStuffService
+    public class PoCService
     {
         private readonly KillTeamContext _dbContext;
 
-        public HotStuffService(KillTeamContext dbContext)
+        public PoCService(KillTeamContext dbContext)
         {
             _dbContext = dbContext;
         }

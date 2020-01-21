@@ -9,10 +9,10 @@ namespace KTApp.Services
 {
     public class MockDataStore : IDataStore<Item>
     {
-        private readonly HotStuffService _hotStuffService;
+        private readonly PoCService _hotStuffService;
         private List<Item> items;
 
-        public MockDataStore(HotStuffService hotStuffService)
+        public MockDataStore(PoCService hotStuffService)
         {
             _hotStuffService = hotStuffService;
 
